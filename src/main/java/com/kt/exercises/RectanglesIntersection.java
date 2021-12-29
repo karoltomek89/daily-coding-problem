@@ -45,58 +45,58 @@ class RectanglesIntersection {
         int x1Add = 4;
         int y1Add = 3;
 
-        int y3 = -1;
-        int x3 = -1;
+        int yFirstIntersectedValue = -1;
+        int xFirstIntersectedValue = -1;
 
-        int y4 = -1;
-        int x4 = -1;
+        int ySecondIntersectedValue = -1;
+        int xSecondIntersectedValue = -1;
 
-        int y2TMP = y2;
-        int x2TMP = x2;
+        int yFirstTmpValue = y2;
+        int xFirstTmpValue = x2;
 
-        int y4TMP = y2 - y2Add;
-        int x4TMP = x2 + x2Add;
+        int ySecondTmpValue = y2 - y2Add;
+        int xSecondTmpValue = x2 + x2Add;
 
         boolean intersect = false;
 
         for (int i = y2Add; i > 0; i--) {
-            if (y2TMP <= y1 && y2TMP >= y1 - y1Add) {
-                y3 = y2TMP;
+            if (yFirstTmpValue <= y1 && yFirstTmpValue >= y1 - y1Add) {
+                yFirstIntersectedValue = yFirstTmpValue;
                 intersect = true;
                 break;
             } else {
-                y2TMP--;
+                yFirstTmpValue--;
             }
         }
 
         for (int i = x2Add; i > 0; i--) {
-            if (x2TMP >= x1 && x2TMP <= x1 + x1Add && intersect == true) {
-                x3 = x2TMP;
+            if (xFirstTmpValue >= x1 && xFirstTmpValue <= x1 + x1Add && intersect == true) {
+                xFirstIntersectedValue = xFirstTmpValue;
                 break;
             } else {
-                x2TMP--;
+                xFirstTmpValue--;
             }
         }
 
         for (int i = y2Add; i > 0; i--) {
-            if (y4TMP <= y1 && y4TMP >= y1 - y1Add && intersect == true) {
-                y4 = y4TMP;
+            if (ySecondTmpValue <= y1 && ySecondTmpValue >= y1 - y1Add && intersect == true) {
+                ySecondIntersectedValue = ySecondTmpValue;
                 break;
             } else {
-                y4TMP++;
+                ySecondTmpValue++;
             }
         }
 
         for (int i = x2Add; i > 0; i--) {
-            if (x4TMP >= x1 && x4TMP <= x1 + x1Add && intersect == true) {
-                x4 = x4TMP;
+            if (xSecondTmpValue >= x1 && xSecondTmpValue <= x1 + x1Add && intersect == true) {
+                xSecondIntersectedValue = xSecondTmpValue;
                 break;
             } else {
-                x4TMP++;
+                xSecondTmpValue++;
             }
         }
         if (intersect == true) {
-            System.out.println(Math.abs(x4-x3)*Math.abs(y4-y3));
+            System.out.println(Math.abs(xSecondIntersectedValue-xFirstIntersectedValue)*Math.abs(ySecondIntersectedValue-yFirstIntersectedValue));
         }else{
             System.out.println(0);
         }
